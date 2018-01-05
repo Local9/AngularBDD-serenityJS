@@ -1,6 +1,7 @@
 // Protractor configuration file, see link for more information
 // https://github.com/angular/protractor/blob/master/lib/config.ts
 const crew = require('serenity-js/lib/stage_crew');
+const basePath = __dirname;
 
 exports.config = {
 
@@ -28,6 +29,15 @@ exports.config = {
     ],
     dialect: 'cucumber',
     stageCueTimeout: 30 * 1000 // up to 30 seconds by default
+  },
+
+  onPrepare: function() {
+    global.ngApimock = require('./.tmp/ngApimock/protractor.mock.js');
+  },
+
+  ngApimockOpts: {
+    angularVersion: 2,
+    hybrid: false
   }
 
 };
