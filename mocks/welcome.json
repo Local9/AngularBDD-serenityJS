@@ -1,0 +1,12 @@
+{
+  "expression": "api/v1/welcome",
+  "method": "GET",
+  "name": "welcome",
+  "responses": {
+    "welcome": {
+      "default": false,
+      "status": 200,
+      "data": { "data": "Welcome to app!!" }
+    }
+  }
+}
