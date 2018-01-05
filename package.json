@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --proxy-config proxy.config.json",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -15,7 +15,8 @@
     "pretest": "serenity update",
     "report": "serenity run",
     "open-report": "opn target/site/serenity/index.html",
-    "bdd": "failsafe clean pretest protractor report open-report"
+    "bdd": "failsafe clean pretest protractor report open-report",
+    "api": "node server.js"
   },
   "private": true,
   "dependencies": {
