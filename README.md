@@ -1,6 +1,4 @@
 # AngularBDD
-[![Build Status](https://travis-ci.org/SpiralOutDotEu/code-problems.svg?branch=master)](https://travis-ci.org/SpiralOutDotEu/code-problems)
-[![CircleCI](https://circleci.com/gh/SpiralOutDotEu/AngularBDD/tree/master.svg?style=svg&circle-token=882a4f5cd4f13d7261290fb2bd7e297a8dfe109d)](https://circleci.com/gh/SpiralOutDotEu/AngularBDD/tree/master)
 
 Scope of this project is to extend test capabilities of an Angular app with BDD testing functionality using CucumberJS and SerenityJS. This also uses [ng-apimock](https://github.com/mdasberg/ng-apimock) to allow you to mock your API for end to end testing.
 
