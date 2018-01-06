@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { WelcomeService } from './service/welcome.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  constructor(welcomeService: WelcomeService) {
+    welcomeService.getWelcome()
+      .then(
+        data => this.title = data
+      );
+  }
 }
