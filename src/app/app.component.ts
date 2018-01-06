@@ -11,7 +11,7 @@ export class AppComponent {
   constructor(welcomeService: WelcomeService) {
     welcomeService.getWelcome()
       .then(
-        data => this.title = data
+        data => this.title = data.message
       );
   }
 }
