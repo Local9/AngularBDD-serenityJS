@@ -1,12 +1,10 @@
 # AngularBDD
-[![Build Status](https://travis-ci.org/SpiralOutDotEu/code-problems.svg?branch=master)](https://travis-ci.org/SpiralOutDotEu/code-problems)
-[![CircleCI](https://circleci.com/gh/SpiralOutDotEu/AngularBDD/tree/master.svg?style=svg&circle-token=882a4f5cd4f13d7261290fb2bd7e297a8dfe109d)](https://circleci.com/gh/SpiralOutDotEu/AngularBDD/tree/master)
 
-Scope of this project is to extend test capabilities of an Angular app with BDD testing functionality using CucumberJS and SerenityJS.
+Scope of this project is to extend test capabilities of an Angular app with BDD testing functionality using CucumberJS and SerenityJS. This also uses [ng-apimock](https://github.com/mdasberg/ng-apimock) to allow you to mock your API for end to end testing.
 
 See below for [Running BDD end-to-end tests with Cucumber and Serenity](##running-bdd-endtoend-tests-with-cucumber-and-serenity)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.1.3.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli).
 
 ## Development server
 
@@ -27,12 +25,12 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 ## Running end-to-end tests with Karma
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
+Before running the tests make sure you are serving the app via `ng serve` and also started the API server running `npm run api` in another console window.
 
 ## Running BDD end-to-end tests with Cucumber and Serenity
 
 Run `npm run bdd` to execute the end-to-end tests via [CucumberJS](https://github.com/cucumber/cucumber-js) and [SerenityJS](http://serenity-js.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
+Before running the tests make sure you are serving the app via `ng serve` and also started the API server running `npm run api` in another console window.
 
 ## Further help
 
