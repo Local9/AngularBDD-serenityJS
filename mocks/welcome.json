@@ -2,11 +2,13 @@
   "expression": "api/v1/welcome",
   "method": "GET",
   "name": "welcome",
+  "isArray": "false",
   "responses": {
     "welcome": {
       "default": false,
       "status": 200,
-      "data": { "data": "Welcome to app!!" }
+      "headers": {},
+      "data": { "message": "Welcome to app!!" }
     }
   }
 }
