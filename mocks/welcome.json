@@ -1,14 +1,20 @@
 {
-  "expression": "api/v1/welcome",
+  "expression": "/api/v1/welcome",
   "method": "GET",
   "name": "welcome",
   "isArray": "false",
   "responses": {
-    "welcome": {
+    "welcome-title": {
       "default": false,
       "status": 200,
       "headers": {},
       "data": { "message": "Welcome to app!!" }
+    },
+    "welcome-new-title": {
+      "default": false,
+      "status": 200,
+      "headers": {},
+      "data": { "message": "Welcome to the new app!!" }
     }
   }
 }

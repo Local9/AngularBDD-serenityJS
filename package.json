@@ -8,7 +8,7 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
+    "e2e": "ng e2e --proxy-config proxy.config.json --webdriver-update=false",
     "webdriver-update": "webdriver-manager update",
     "protractor": "protractor ./protractor.conf.js",
     "clean": "rimraf target",

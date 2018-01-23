@@ -13,7 +13,7 @@ export = function myStepDefinitions () {
 
 
   this.Then(/^I should see welcome message$/, function (callback) {
-    ngApimock.selectScenario('welcome', 'welcome');
+    ngApimock.selectScenario('welcome', 'welcome-new-title');
     const el = element(by.css('app-root h1')).getText();
     return expect(el).to.eventually.equal('Welcome to app!!').then(function () {
       callback();
