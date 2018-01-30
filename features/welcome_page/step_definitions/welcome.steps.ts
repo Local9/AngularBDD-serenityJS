@@ -8,14 +8,15 @@ const expect = chai.expect;
 export = function myStepDefinitions () {
 
   this.Given(/^I am on the homepage$/, function (callback) {
-    browser.get('/').then(callback());
+    ngApimock.selectScenario('welcome', 'welcome-new-title').then(() => {
+      browser.get('/').then(callback());
+    });
   });
 
 
   this.Then(/^I should see welcome message$/, function (callback) {
-    ngApimock.selectScenario('welcome', 'welcome-new-title');
     const el = element(by.css('app-root h1')).getText();
-    return expect(el).to.eventually.equal('Welcome to app!!').then(function () {
+    return expect(el).to.eventually.equal('Welcome to the new app!!').then(function () {
       callback();
     }).catch(function (err) {
       callback(err);

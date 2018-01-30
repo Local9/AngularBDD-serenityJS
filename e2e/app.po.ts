@@ -2,7 +2,9 @@ import { browser, by, element } from 'protractor';
 
 export class AngularBDDPage {
   navigateTo() {
-    return browser.get('/');
+    return ngApimock.selectScenario('welcome', 'welcome-title-new').then(() => {
+      return browser.get('/');
+    });
   }
 
   getParagraphText() {
