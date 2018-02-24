@@ -5,15 +5,9 @@
   "isArray": "false",
   "responses": {
     "welcome-title": {
-      "default": true,
-      "status": 200,
-      "headers": {},
       "data": { "message": "Welcome to app!!" }
     },
     "welcome-new-title": {
-      "default": false,
-      "status": 200,
-      "headers": {},
       "data": { "message": "Welcome to the new app!!" }
     }
   }
