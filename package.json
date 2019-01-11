@@ -8,7 +8,7 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
+    "nge2e": "ng e2e",
     "pree2e": "tsc",
     "webdriver-update": "webdriver-manager update",
     "protractor": "protractor ./protractor.conf.js",
@@ -17,7 +17,8 @@
     "report": "serenity run",
     "open-report": "opn target/site/serenity/index.html",
     "bdd": "failsafe clean pretest protractor report open-report",
-    "api": "node server.js"
+    "api": "node server.js",
+    "e2e": "concurrently \"npm:pree2e\" \"npm:nge2e\""
   },
   "private": true,
   "dependencies": {
@@ -30,6 +31,7 @@
     "@angular/platform-browser": "^5.2.11",
     "@angular/platform-browser-dynamic": "^5.2.11",
     "@angular/router": "^5.2.11",
+    "concurrently": "^4.1.0",
     "core-js": "^2.6.2",
     "open": "0.0.5",
     "rxjs": "^5.5.12",
