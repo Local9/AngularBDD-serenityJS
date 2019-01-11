@@ -1,4 +1,3 @@
-import {browser, by, element} from 'protractor';
 import { defineSupportCode } from 'cucumber';
 import { WelcomePage } from '../welcome.po';
 const chai = require('chai');
