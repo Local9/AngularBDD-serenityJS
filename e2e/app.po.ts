@@ -1,5 +1,7 @@
 import { browser, by, element } from 'protractor';
 
+declare const ngApimock: any;
+
 export class AngularBDDPage {
   navigateTo() {
     return ngApimock.selectScenario('welcome', 'welcome-title-new').then(() => {

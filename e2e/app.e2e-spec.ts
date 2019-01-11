@@ -9,6 +9,8 @@ describe('angular-bdd App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to the new app!!');
+    page.getParagraphText().then(result => {
+      expect(result).toEqual('Welcome to the app!!');
+    })
   });
 });

@@ -9,8 +9,7 @@ import { WelcomeService } from './service/welcome.service';
 export class AppComponent {
   title = 'app';
   constructor(welcomeService: WelcomeService) {
-    welcomeService.getWelcome()
-      .then(
+    welcomeService.getWelcome().then(
         data => this.title = data.message
       );
   }

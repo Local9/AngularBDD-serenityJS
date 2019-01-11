@@ -4,11 +4,11 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --proxy-config proxy.config.json",
+    "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e --proxy-config proxy.config.json",
+    "e2e": "ng e2e",
     "webdriver-update": "webdriver-manager update",
     "protractor": "protractor ./protractor.conf.js",
     "clean": "rimraf target",
