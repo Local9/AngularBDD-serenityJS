@@ -1,26 +1,25 @@
 import {browser, by, element} from 'protractor';
+import { defineSupportCode } from 'cucumber';
+import { WelcomePage } from '../welcome.po';
 const chai = require('chai');
 const chaiAsPromised = require('chai-as-promised');
 
 chai.use(chaiAsPromised);
 const expect = chai.expect;
 
-export = function myStepDefinitions () {
+defineSupportCode(({Given, When, Then, Before}) => {
+  let app: WelcomePage;
 
-  this.Given(/^I am on the homepage$/, function (callback) {
-    ngApimock.selectScenario('welcome', 'welcome-new-title').then(() => {
-      browser.get('/').then(callback());
-    });
-  });
+  Before(() => {
+    app = new WelcomePage();
+  })
 
+  Given(/^I am on the homepage$/,
+    () => app.navigateTo());
 
-  this.Then(/^I should see welcome message$/, function (callback) {
-    const el = element(by.css('app-root h1')).getText();
-    return expect(el).to.eventually.equal('Welcome to the new app!!').then(function () {
-      callback();
-    }).catch(function (err) {
-      callback(err);
-    });
-  });
+  Then(/^I should see welcome message$/,
+    () => app.getParagraphText().then(text => {
+      expect(text).toEqual('Welcome')
+    }));
 
-};
+});
