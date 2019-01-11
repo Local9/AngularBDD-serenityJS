@@ -36,7 +36,7 @@ exports.config = {
   },
 
   ngApimockOpts: {
-    angularVersion: 2,
+    angularVersion: 7,
     hybrid: false
   }
 
