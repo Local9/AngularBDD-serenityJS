@@ -6,6 +6,7 @@ const basePath = __dirname;
 console.log(__dirname);
 
 exports.config = {
+  allScriptsTimeout: 11000,
 
   capabilities: {
     'browserName': 'chrome'
@@ -15,13 +16,24 @@ exports.config = {
   baseUrl: 'http://localhost:4200/',
   // Framework definition - tells Protractor to use Serenity/JS
   framework: 'custom',
-  frameworkPath: require.resolve('serenity-js'),
-  specs: ['features/**/*.feature'],
+  // frameworkPath: require.resolve('serenity-js'),
+  frameworkPath: require.resolve('protractor-cucumber-framework'),
+
+  specs: [
+    './e2e/features/**/*.feature'
+  ],
 
   cucumberOpts: {
-    require: ['dist/out-tsc/features/**/step_definitions/*.js'], // loads step definitions
-    format: 'pretty', // enable console output
-    compiler: 'ts:ts-node/register' // interpret step definitions as TypeScript
+    // require: ['./e2e/steps/**/*.ts'], // loads step definitions
+    require: [
+      'dist/out-tsc/e2e/steps/**/*.steps.js'
+    ], // loads step definitions
+    format: [
+      'pretty'
+    ],
+    dryRun: false,
+    compiler: []
+    //compiler: 'ts:ts-node/register' // interpret step definitions as TypeScript
   },
 
   serenity: {
@@ -33,7 +45,7 @@ exports.config = {
     stageCueTimeout: 30 * 1000 // up to 30 seconds by default
   },
 
-  onPrepare: function() {
+  onPrepare: function () {
     global.ngApimock = require('./.tmp/ngApimock/protractor.mock.js');
   },
 
