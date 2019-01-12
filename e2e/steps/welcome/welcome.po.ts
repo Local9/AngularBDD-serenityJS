@@ -4,7 +4,7 @@ declare const ngApimock: any;
 
 export class WelcomePage {
   navigateTo() {
-    return ngApimock.selectScenario('welcome', 'welcome-new-title').then(() => {
+    return ngApimock.selectScenario('welcome', 'welcome-title').then(() => {
       return browser.get('/');
     });
   }

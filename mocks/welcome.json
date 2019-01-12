@@ -6,11 +6,7 @@
   "responses": {
     "welcome-title": {
       "status": 200,
-      "data": { "message": "Welcome to app!!" }
-    },
-    "welcome-new-title": {
-      "status": 200,
-      "data": { "message": "Welcome to the new app!!" }
+      "data": { "message": "Welcome to the app!!" }
     }
   }
 }
