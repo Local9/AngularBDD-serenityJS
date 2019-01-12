@@ -26,12 +26,13 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 Run `npm run e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 This will compile the steps for cucumber and run the end to end tests, make sure that before running the tests make sure you have started the API server running `npm run api` in another console window if you are not running tests against a test API.
-
 **WORK IN PROGRESS**
+
 ## Running BDD end-to-end tests with Cucumber and Serenity
 
 Run `npm run bdd` to execute the end-to-end tests via [CucumberJS](https://github.com/cucumber/cucumber-js) and [SerenityJS](http://serenity-js.org/).
 Before running the tests make sure you are serving the app via `ng serve` and also started the API server running `npm run api` in another console window if you are not passThrough tests.
+**WORK IN PROGRESS**
 
 ## Further help
 
