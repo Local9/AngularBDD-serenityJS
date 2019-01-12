@@ -1,5 +1,4 @@
 const { Given, When, Then, Before } = require('cucumber');
-// import { WelcomePage } from './welcome.po';
 import { WelcomePage } from './welcome.po';
 const chai = require('chai');
 const chaiAsPromised = require('chai-as-promised');
