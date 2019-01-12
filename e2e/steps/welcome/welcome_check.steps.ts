@@ -17,6 +17,6 @@ Given(/^I am on the homepage$/,
 
 Then(/^I should see welcome message$/,
   () => app.getParagraphText().then(text => {
-    expect(text).equal('Welcome to the app!!');
+    expect(text).equal('This is the title I want, but selectScenario is not setting it.');
   }));
 
