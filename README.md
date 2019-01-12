@@ -1,6 +1,6 @@
 # AngularBDD
 
-Scope of this project is to extend test capabilities of an Angular app with BDD testing functionality using CucumberJS and SerenityJS. This also uses [ng-apimock](https://github.com/mdasberg/ng-apimock) to allow you to mock your API for end to end testing.
+Scope of this project is to extend test capabilities of an Angular app with BDD testing functionality using CucumberJS and SerenityJS. This also uses [ng-apimock](https://github.com/mdasberg/ng-apimock) to allow you to mock your API for end to end testing without the hassel of setting up a backend.
 
 See below for [Running BDD end-to-end tests with Cucumber and Serenity](##running-bdd-endtoend-tests-with-cucumber-and-serenity)
 
@@ -25,8 +25,9 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 ## Running end-to-end tests with Karma
 
 Run `npm run e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you have started the API server running `npm run api` in another console window if you are not passThrough tests.
+This will compile the steps for cucumber and run the end to end tests, make sure that before running the tests make sure you have started the API server running `npm run api` in another console window if you are not running tests against a test API.
 
+**WORK IN PROGRESS**
 ## Running BDD end-to-end tests with Cucumber and Serenity
 
 Run `npm run bdd` to execute the end-to-end tests via [CucumberJS](https://github.com/cucumber/cucumber-js) and [SerenityJS](http://serenity-js.org/).
