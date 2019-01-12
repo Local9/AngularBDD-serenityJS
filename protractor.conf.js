@@ -28,9 +28,7 @@ exports.config = {
     require: [
       'dist/out-tsc/e2e/steps/**/*.steps.js'
     ], // loads step definitions
-    format: [
-      'pretty'
-    ],
+    format: [],
     dryRun: false,
     compiler: []
     //compiler: 'ts:ts-node/register' // interpret step definitions as TypeScript
