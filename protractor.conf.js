@@ -43,13 +43,7 @@ exports.config = {
     stageCueTimeout: 30 * 1000 // up to 30 seconds by default
   },
 
-  onPrepare: function () {
-    global.ngApimock = require('./.tmp/ngApimock/protractor.mock.js');
-  },
-
-  ngApimockOpts: {
-    angularVersion: 7,
-    hybrid: false
-  }
-
+  plugins: [{
+    package: '@ng-apimock/protractor-plugin'
+  }]
 };

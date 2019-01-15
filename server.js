@@ -1,24 +1,15 @@
 const express = require('express');
-const path = require('path');
-const ngApimock = require('ng-apimock')();
+const apimock = require('@ng-' +
+  'apimock/core');
+const devInterface = require('@ng-apimock/dev-interface');
 const app = express();
 
-/**
- * Register all available mocks and generate interface
- */
-ngApimock.run({
-  "src": "mocks",
-  "outputDir": ".tmp/ngApimock",
-  "done": function() {}
-});
-
-ngApimock.watch("mocks");
-
 app.set('port', (process.env.PORT || 3000));
-// process the api calls through ng-apimock
-app.use(require('ng-apimock/lib/utils').ngApimockRequest);
-// serve the mocking interface for local development
-app.use('/mocking', express.static('.tmp/ngApimock'));
+
+apimock.processor.process({src: 'mocks'});
+
+app.use(apimock.middleware);
+app.use('/mocking', express.static(devInterface));
 
 app.listen(app.get('port'), function() {
   console.log('app running on port', app.get('port'));

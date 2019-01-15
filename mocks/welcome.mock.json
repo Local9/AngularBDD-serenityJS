@@ -1,16 +1,16 @@
 {
-  "expression": "api\/v1\/welcome",
-  "method": "GET",
   "name": "welcome",
   "isArray": "false",
+  "request": {
+    "url": "api/v1/welcome",
+    "method": "GET"
+  },
   "responses": {
     "welcome-title": {
-      "status": 200,
       "data": { "message": "This is the wrong title, yet is default." },
       "default": true
     },
     "real-welcome-title": {
-      "status": 200,
       "data": { "message": "This is the title I want, but selectScenario is not setting it." },
       "default": false
     }

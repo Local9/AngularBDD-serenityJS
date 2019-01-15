@@ -1,6 +1,6 @@
 # AngularBDD
 
-Scope of this project is to extend test capabilities of an Angular app with BDD testing functionality using CucumberJS and SerenityJS. This also uses [ng-apimock](https://github.com/mdasberg/ng-apimock) to allow you to mock your API for end to end testing without the hassel of setting up a backend.
+Scope of this project is to extend test capabilities of an Angular app with BDD testing functionality using CucumberJS and SerenityJS. This also uses [ng-apimock](https://github.com/ng-apimock/core) to allow you to mock your API for end to end testing without the hassel of setting up a backend.
 
 See below for [Running BDD end-to-end tests with Cucumber and Serenity](##running-bdd-endtoend-tests-with-cucumber-and-serenity)
 
