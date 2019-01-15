@@ -1,6 +1,7 @@
 import { browser, by, element } from 'protractor';
+import {Client} from '@ng-apimock/base-client';
 
-declare const ngApimock: any;
+declare const ngApimock: Client; // match the global name.
 
 export class WelcomePage {
   navigateTo() {
