@@ -1,5 +1,5 @@
 import { browser, by, element } from 'protractor';
-import {Client} from '@ng-apimock/base-client';
+import { Client } from '@ng-apimock/base-client';
 
 declare const ngApimock: Client; // match the global name.
 
