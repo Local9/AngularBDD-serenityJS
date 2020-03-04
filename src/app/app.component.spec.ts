@@ -1,79 +1,48 @@
+import { AppComponent } from './app.component'
+import { ComponentFixture, async, TestBed } from '@angular/core/testing';
+import { WelcomeService } from './service/welcome.service';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { Data } from './domain/data';
+import { of } from 'rxjs';
+
 /* tslint:disable:no-unused-variable */
 
-import {
-  inject,
-  async,
-  fakeAsync,
-  tick,
-  ComponentFixture,
-  TestBed
-} from '@angular/core/testing';
-
-import { Http, BaseRequestOptions, Response, ResponseOptions, ConnectionBackend } from '@angular/http';
-import { MockBackend } from '@angular/http/testing';
-import { Observable } from 'rxjs/Observable';
-
-import { WelcomeService } from './service/welcome.service';
-import { AppComponent } from './app.component';
-import { Component } from '@angular/core';
-
 describe('AppComponent', () => {
-  let fixture;
-  let component;
+  let component: AppComponent;
+  let fixture: ComponentFixture<AppComponent>;
   let welcomeService;
-  let spy;
+  let getQuoteSpy;
 
-  beforeEach(
-    async(() => {
-      TestBed.configureTestingModule({
-        declarations: [
-          AppComponent
-        ],
-        providers: [
-          MockBackend,
-          BaseRequestOptions,
-          WelcomeService,
-          {
-            provide: Http, useFactory: (backendInstance: MockBackend, defaultOptions: BaseRequestOptions) => {
-              return new Http(backendInstance, defaultOptions);
-            },
-            deps: [MockBackend, BaseRequestOptions]
-          }
-        ]
-      });
+  const testUrl = '/api/v1/welcome';
+  const testData: Data = { message: 'Welcome' };
 
-      fixture = TestBed.createComponent(AppComponent);
-      component = fixture.debugElement.componentInstance;
+  beforeEach(async () => {
+    welcomeService = jasmine.createSpyObj('WelcomeService', ['getWelcome']);
+    getQuoteSpy = welcomeService.getWelcome.and.returnValue( of(testData) );
 
-      welcomeService = fixture.debugElement.injector.get(WelcomeService);
+    TestBed.configureTestingModule({
+      declarations: [AppComponent],
+      providers: [
+        {provide: WelcomeService, useValue: welcomeService }
+      ],
+      imports: [HttpClientTestingModule]
+    })
+      .compileComponents();
+  });
 
-      const observable: Observable<Response> = Observable.create(observer => {
-        const responseOptions = new ResponseOptions({
-          body: '{"message": "Welcome"}'
-        });
-        observer.next(new Response(responseOptions));
-      });
+  beforeEach(() => {
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
+    welcomeService = TestBed.get(WelcomeService);
+  });
 
-      spy = spyOn(welcomeService, 'getWelcome').and.returnValue(observable);
-    }
-    ));
-
-  it('should create an instance', () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  it(`should have as title 'app'`, async(() => {
-    expect(component.title).toEqual('app');
-  }));
-
   it(`should have as title 'Welcome'`, async(() => {
     fixture.detectChanges();
-    expect(component.title).toEqual('Welcome');
+    expect(getQuoteSpy.calls.any()).toBe(true, 'getQuote called');
+    expect(component.title).toBe('Welcome');
   }));
-
-  // it('should render title in a h1 tag', async(() => {
-  //   fixture.detectChanges();
-  //   const compiled = fixture.debugElement.nativeElement;
-  //   expect(compiled.querySelector('h1').textContent).toContain('Welcome to app!!');
-  // }));
-});
+})

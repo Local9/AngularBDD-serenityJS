@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpModule  } from '@angular/http';
+import { HttpClientModule  } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { WelcomeService } from './service/welcome.service';
 
@@ -10,7 +10,7 @@ import { WelcomeService } from './service/welcome.service';
   ],
   imports: [
     BrowserModule,
-    HttpModule
+    HttpClientModule,
   ],
   providers: [WelcomeService],
   bootstrap: [AppComponent]
