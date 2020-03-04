@@ -10,7 +10,7 @@ import { WelcomeService } from './service/welcome.service';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [WelcomeService],
   bootstrap: [AppComponent]
