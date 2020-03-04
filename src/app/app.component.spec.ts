@@ -9,52 +9,67 @@ import {
   TestBed
 } from '@angular/core/testing';
 
-import { Http, BaseRequestOptions, Response, ResponseOptions, ConnectionBackend } from '@angular/http';
-import { MockBackend } from '@angular/http/testing';
+import { HttpClient, HttpRequest, HttpResponse, HttpBackend } from '@angular/common/http';
+import { HttpTestingController, HttpClientTestingModule } from '@angular/common/http/testing';
 import { Observable } from 'rxjs/Observable';
 
 import { WelcomeService } from './service/welcome.service';
 import { AppComponent } from './app.component';
 import { Component } from '@angular/core';
+import { Data } from './domain/data';
 
 describe('AppComponent', () => {
+  const testUrl = '/api/v1/welcome';
+  const testData: Data = {message: 'Welcome'};
+
   let fixture;
   let component;
   let welcomeService;
   let spy;
 
+  let httpClient: HttpClient;
+  let httpTestingController: HttpTestingController;
+
   beforeEach(
     async(() => {
       TestBed.configureTestingModule({
+        imports: [HttpClientTestingModule],
         declarations: [
           AppComponent
         ],
-        providers: [
-          MockBackend,
-          BaseRequestOptions,
-          WelcomeService,
-          {
-            provide: Http, useFactory: (backendInstance: MockBackend, defaultOptions: BaseRequestOptions) => {
-              return new Http(backendInstance, defaultOptions);
-            },
-            deps: [MockBackend, BaseRequestOptions]
-          }
-        ]
+        // providers: [
+        //   HttpTestingController,
+        //   HttpRequest,
+        //   WelcomeService,
+        //   {
+        //     provide: HttpClient, useFactory: (backendInstance: HttpTestingController, defaultOptions: HttpRequest) => {
+        //       return new HttpClient(backendInstance, defaultOptions);
+        //     },
+        //     deps: [HttpTestingController, HttpRequest]
+        //   }
+        // ]
       });
+
+      httpClient = TestBed.inject(HttpClient);
+      httpTestingController = TestBed.inject(HttpTestingController);
 
       fixture = TestBed.createComponent(AppComponent);
       component = fixture.debugElement.componentInstance;
 
       welcomeService = fixture.debugElement.injector.get(WelcomeService);
 
-      const observable: Observable<Response> = Observable.create(observer => {
-        const responseOptions = new ResponseOptions({
-          body: '{"message": "Welcome"}'
-        });
-        observer.next(new Response(responseOptions));
-      });
+      httpClient.get<Data>(testUrl).subscribe(data => {
+        expect(data).toEqual(testData);
+      })
 
-      spy = spyOn(welcomeService, 'getWelcome').and.returnValue(observable);
+      // const observable: Observable<Response> = Observable.create(observer => {
+      //   const HttpResponse = new HttpResponse({
+      //     body: '{"message": "Welcome"}'
+      //   });
+      //   observer.next(new Response(HttpResponse));
+      // });
+
+      // spy = spyOn(welcomeService, 'getWelcome').and.returnValue(observable);
     }
     ));
 

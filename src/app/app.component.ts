@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { WelcomeService } from './service/welcome.service';
+import { Data } from './domain/data';
 
 @Component({
   selector: 'app-root',
@@ -9,8 +10,8 @@ import { WelcomeService } from './service/welcome.service';
 export class AppComponent {
   title = 'app';
   constructor(welcomeService: WelcomeService) {
-    welcomeService.getWelcome().then(
-        data => this.title = data.message
-      );
+    welcomeService.getWelcome().subscribe((data: Data) => {
+        this.title = data.message
+    });
   }
 }

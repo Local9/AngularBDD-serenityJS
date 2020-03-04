@@ -1,16 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
+import { HttpClient } from '@angular/common/http';
 import 'rxjs/Rx';
 
 @Injectable()
 export class WelcomeService {
-  constructor(private http: Http) { }
+  constructor(private http: HttpClient) { }
 
   getWelcome() {
-    return this.http.get('/api/v1/welcome').map(response => response.json())
-    .catch((error: Response | any) => {
-      return Observable.throw(error.json());
-    }).toPromise();
+    return this.http.get('/api/v1/welcome');
   }
 }
